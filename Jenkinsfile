@@ -5,11 +5,21 @@ pipeline {
         jdk 'jdk8' 
     }
     stages{
+	stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
         stage('Run sequential stage and mvn build'){
             steps {
-		sh 'cd hello-world'
-		sh 'mvn clean install'
-                echo "Sequential Stage 1"
+		sh '''
+			cd hello-world
+			mvn clean install
+                	echo "Sequential Stage 1"
+		 '''
             }
         }
         stage('Run Parallel stages'){
