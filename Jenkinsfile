@@ -1,8 +1,10 @@
 pipeline {
     agent none
     stages{
-        stage('Run sequential stage'){
+        stage('Run sequential stage and mvn build'){
             steps {
+		sh 'cd hello-world'
+		sh 'mvn clean install'
                 echo "Sequential Stage 1"
             }
         }
