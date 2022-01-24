@@ -1,5 +1,9 @@
 pipeline {
     agent none
+    tools { 
+        maven 'maven3.8.4' 
+        jdk 'jdk8' 
+    }
     stages{
         stage('Run sequential stage and mvn build'){
             steps {
